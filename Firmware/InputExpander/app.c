@@ -70,32 +70,36 @@ void core_callback_1st_config_hw_after_boot(void)
 	/* Don't delete this function!!! */
 	init_ios();
 	
+	/* Check if device is an harp input expander hardware */
+	if (!read_IS_INPUT)
+		core_func_catastrophic_error_detected();
+	
 	/* Initialize hardware */
 	for (uint8_t i = 0; i < 2; i++)
 	{
-		set_LED_I0;  _delay_ms(T_STARTUP_ON); clr_LED_I0;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I1;  _delay_ms(T_STARTUP_ON); clr_LED_I1;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I2;  _delay_ms(T_STARTUP_ON); clr_LED_I2;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I3;  _delay_ms(T_STARTUP_ON); clr_LED_I3;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I4;  _delay_ms(T_STARTUP_ON); clr_LED_I4;  _delay_ms(T_STARTUP_OFF);
+		set_LED_0;  _delay_ms(T_STARTUP_ON); clr_LED_0;  _delay_ms(T_STARTUP_OFF);
+		set_LED_1;  _delay_ms(T_STARTUP_ON); clr_LED_1;  _delay_ms(T_STARTUP_OFF);
+		set_LED_2;  _delay_ms(T_STARTUP_ON); clr_LED_2;  _delay_ms(T_STARTUP_OFF);
+		set_LED_3;  _delay_ms(T_STARTUP_ON); clr_LED_3;  _delay_ms(T_STARTUP_OFF);
+		set_LED_4;  _delay_ms(T_STARTUP_ON); clr_LED_4;  _delay_ms(T_STARTUP_OFF);
 		set_LED_PWR;  _delay_ms(T_STARTUP_ON); clr_LED_PWR;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I5;  _delay_ms(T_STARTUP_ON); clr_LED_I5;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I6;  _delay_ms(T_STARTUP_ON); clr_LED_I6;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I7;  _delay_ms(T_STARTUP_ON); clr_LED_I7;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I8;  _delay_ms(T_STARTUP_ON); clr_LED_I8;  _delay_ms(T_STARTUP_OFF);
-		set_LED_I9;  _delay_ms(T_STARTUP_ON); clr_LED_I9;  _delay_ms(T_STARTUP_OFF);
+		set_LED_5;  _delay_ms(T_STARTUP_ON); clr_LED_5;  _delay_ms(T_STARTUP_OFF);
+		set_LED_6;  _delay_ms(T_STARTUP_ON); clr_LED_6;  _delay_ms(T_STARTUP_OFF);
+		set_LED_7;  _delay_ms(T_STARTUP_ON); clr_LED_7;  _delay_ms(T_STARTUP_OFF);
+		set_LED_8;  _delay_ms(T_STARTUP_ON); clr_LED_8;  _delay_ms(T_STARTUP_OFF);
+		set_LED_9;  _delay_ms(T_STARTUP_ON); clr_LED_9;  _delay_ms(T_STARTUP_OFF);
 		set_LED_STATE;  _delay_ms(T_STARTUP_ON); clr_LED_STATE;  _delay_ms(T_STARTUP_OFF);
 	}
 	_delay_ms(T_STARTUP_ON*2);
-	
+
 	for (uint8_t i = 0; i < 2; i++)
 	{
-		set_LED_I0; set_LED_I1; set_LED_I2; set_LED_I3; set_LED_I4; set_LED_PWR;
-		set_LED_I5; set_LED_I6; set_LED_I7; set_LED_I8; set_LED_I9; set_LED_STATE;
+		set_LED_0; set_LED_1; set_LED_2; set_LED_3; set_LED_4; set_LED_PWR;
+		set_LED_5; set_LED_6; set_LED_7; set_LED_8; set_LED_9; set_LED_STATE;
 		_delay_ms(T_STARTUP_ON*2);
 		
-		clr_LED_I0; clr_LED_I1; clr_LED_I2; clr_LED_I3; clr_LED_I4; clr_LED_PWR;
-		clr_LED_I5; clr_LED_I6; clr_LED_I7; clr_LED_I8; clr_LED_I9; clr_LED_STATE;
+		clr_LED_0; clr_LED_1; clr_LED_2; clr_LED_3; clr_LED_4; clr_LED_PWR;
+		clr_LED_5; clr_LED_6; clr_LED_7; clr_LED_8; clr_LED_9; clr_LED_STATE;
 		_delay_ms(T_STARTUP_ON*2);
 	}
 	
@@ -106,13 +110,16 @@ void core_callback_1st_config_hw_after_boot(void)
 void core_callback_reset_registers(void)
 {
 	/* Initialize registers */
-	
+	app_regs.REG_RISING_EDGE_ENABLE = B_IN0 | B_IN1 | B_IN2 | B_IN3 | B_IN4 | B_IN5 | B_IN6 | B_IN7 | B_IN8 | B_IN9;
+	app_regs.REG_FALLING_EDGE_ENABLE = B_IN0 | B_IN1 | B_IN2 | B_IN3 | B_IN4 | B_IN5 | B_IN6 | B_IN7 | B_IN8 | B_IN9;
+
 }
 
 void core_callback_registers_were_reinitialized(void)
 {
 	/* Update registers if needed */
-	
+	app_write_REG_EXPANSION_OPTIONS(&app_regs.REG_EXPANSION_OPTIONS);
+	app_write_REG_INPUT_MODE(&app_regs.REG_INPUT_MODE);
 }
 
 /************************************************************************/
@@ -127,7 +134,9 @@ void core_callback_visualen_to_on(void)
 void core_callback_visualen_to_off(void)
 {
 	/* Clear all the enabled indicators */
-	
+	clr_LED_0; clr_LED_1; clr_LED_2; clr_LED_3; clr_LED_4;
+	clr_LED_5; clr_LED_6; clr_LED_7; clr_LED_8; clr_LED_9;
+	clr_LED_PWR;
 }
 
 /************************************************************************/
@@ -141,11 +150,24 @@ void core_callback_device_to_speed(void) {}
 /************************************************************************/
 /* Callbacks: 1 ms timer                                                */
 /************************************************************************/
-void core_callback_t_before_exec(void) {}
+uint16_t acquisition_counter = 0;
+
+void core_callback_t_before_exec(void)
+{
+	if (app_regs.REG_INPUT_MODE == MSK_AT_2000FPS || ((app_regs.REG_INPUT_MODE == MSK_AT_1000FPS) && (acquisition_counter++&1)))
+	{
+		app_regs.REG_INPUTS[0]  = (read_IN0 ? B_IN0 : 0) | (read_IN1 ? B_IN1 : 0) | (read_IN2 ? B_IN2 : 0) | (read_IN3 ? B_IN3 : 0) | (read_IN5 ? B_IN5 : 0);
+		app_regs.REG_INPUTS[0] |= (read_IN5 ? B_IN5 : 0) | (read_IN6 ? B_IN6 : 0) | (read_IN7 ? B_IN7 : 0) | (read_IN8 ? B_IN8 : 0) | (read_IN9 ? B_IN9 : 0);
+		core_func_send_event(ADD_REG_INPUTS, true);
+	}
+}
 void core_callback_t_after_exec(void) {}
 void core_callback_t_new_second(void) {}
 void core_callback_t_500us(void) {}
-void core_callback_t_1ms(void) {}
+void core_callback_t_1ms(void)
+{
+	acquisition_counter = 0;
+}
 
 /************************************************************************/
 /* Callbacks: uart control                                              */
