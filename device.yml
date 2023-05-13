@@ -1,0 +1,117 @@
+%YAML 1.1
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/harp-tech/reflex-generator/main/schema/device.json
+device: InputExpander
+whoAmI: 1106
+firmwareVersion: "2.1"
+hardwareTargets: "1.0"
+registers:
+  AuxInPort:
+    address: 32
+    type: U8
+    access: Event
+    maskType: AuxiliaryInput
+    description: Reports the state of the auxiliary inputs.
+  AuxInEnableRisingEdge:
+    address: 33
+    type: U8
+    access: Write
+    maskType: AuxiliaryInput
+    description: Enables rising edge detection on the auxiliary inputs.
+  AuxInEnableFallingEdge:
+    address: 34
+    type: U8
+    access: Write
+    maskType: AuxiliaryInput
+    description: Enables falling edge detection on the auxiliary input port.
+  DigitalInPort:
+    address: 35
+    type: U16
+    access: Event
+    length: 2
+    payloadSpec:
+      DigitalInputState:
+        offset: 0
+        maskType: DigitalInput
+        description: Reports the state of all digital inputs in the port.
+      DigitalInputChanged:
+        offset: 1
+        maskType: DigitalInput
+        description: Reports which digital inputs changed state in the port.
+    maskType: DigitalInput
+    description: Reports the state of the digital inputs.
+  DigitalInPortEnableRisingEdge:
+    address: 36
+    type: U16
+    access: Write
+    maskType: DigitalInput
+    description: Enables rising edge detection on the digital input port.
+  DigitalInPortEnableFallingEdge:
+    address: 37
+    type: U16
+    access: Write
+    maskType: DigitalInput
+    description: Enables falling edge detection on the digital input port.
+  InputSampling:
+    address: 38
+    type: U8
+    access: Write
+    maskType: InputSamplingMode
+    description: Configures the input sampling mode.
+  EncoderSampling:
+    address: 39
+    type: U8
+    access: Write
+    maskType: EncoderSamplingMode
+    description: Configures the rotary encoder sampling mode.
+  EncoderData:
+    address: 40
+    type: S16
+    access: Event
+    description: Reports the value of the current read from the rotary encoder.
+  ExpansionBoard:
+    address: 41
+    type: U8
+    access: Write
+    maskType: ExpansionBoardTypes
+    description: Selects the board to be interfaced with via the expansion port.
+bitMasks:
+  AuxiliaryInput:
+    bits:
+      Aux0: 0x1
+      Aux1: 0x2
+      Aux0Changed: 0x20
+      Aux1Changed: 0x40
+    description: Specifies the state of auxiliary input lines.
+  DigitalInput:
+    bits:
+      DI0: 0x1
+      DI1: 0x2
+      DI2: 0x4
+      DI3: 0x8
+      DI4: 0x10
+      DI5: 0x20
+      DI6: 0x40
+      DI7: 0x80
+      DI8: 0x100
+      DI9: 0x200
+    description: Specifies the state of the digital input lines.
+groupMasks:
+  InputSamplingMode:
+    values:
+      OnInterrupt: 0
+      OnPooling1kHz: 1
+      OnPooling2Hz: 2
+    description: Specifies the input mode configuration from the available list of options.
+  EncoderSamplingMode:
+    values:
+      Disabled: 0
+      Pooling250Hz: 1
+      Pooling500Hz: 2
+      Pooling1kHz: 3
+      OnMovement: 4
+    description: Specifies the available sampling modes for the rotary encoder.
+  ExpansionBoardTypes:
+    values:
+      Breakout: 0
+    description: Specifies the available expansion boards implemented.
