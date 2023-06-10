@@ -51,7 +51,7 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<AuxiliaryInput> ReadAuxInPortAsync()
+        public async Task<AuxiliaryInputs> ReadAuxInPortAsync()
         {
             var reply = await CommandAsync(HarpCommand.ReadByte(AuxInPort.Address));
             return AuxInPort.GetPayload(reply);
@@ -64,257 +64,257 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<AuxiliaryInput>> ReadTimestampedAuxInPortAsync()
+        public async Task<Timestamped<AuxiliaryInputs>> ReadTimestampedAuxInPortAsync()
         {
             var reply = await CommandAsync(HarpCommand.ReadByte(AuxInPort.Address));
             return AuxInPort.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the AuxInEnableRisingEdge register.
+        /// Asynchronously reads the contents of the AuxInRisingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<AuxiliaryInput> ReadAuxInEnableRisingEdgeAsync()
+        public async Task<AuxiliaryInputs> ReadAuxInRisingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInEnableRisingEdge.Address));
-            return AuxInEnableRisingEdge.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInRisingEdge.Address));
+            return AuxInRisingEdge.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the AuxInEnableRisingEdge register.
+        /// Asynchronously reads the timestamped contents of the AuxInRisingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<AuxiliaryInput>> ReadTimestampedAuxInEnableRisingEdgeAsync()
+        public async Task<Timestamped<AuxiliaryInputs>> ReadTimestampedAuxInRisingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInEnableRisingEdge.Address));
-            return AuxInEnableRisingEdge.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInRisingEdge.Address));
+            return AuxInRisingEdge.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the AuxInEnableRisingEdge register.
+        /// Asynchronously writes a value to the AuxInRisingEdge register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteAuxInEnableRisingEdgeAsync(AuxiliaryInput value)
+        public async Task WriteAuxInRisingEdgeAsync(AuxiliaryInputs value)
         {
-            var request = AuxInEnableRisingEdge.FromPayload(MessageType.Write, value);
+            var request = AuxInRisingEdge.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the AuxInEnableFallingEdge register.
+        /// Asynchronously reads the contents of the AuxInFallingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<AuxiliaryInput> ReadAuxInEnableFallingEdgeAsync()
+        public async Task<AuxiliaryInputs> ReadAuxInFallingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInEnableFallingEdge.Address));
-            return AuxInEnableFallingEdge.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInFallingEdge.Address));
+            return AuxInFallingEdge.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the AuxInEnableFallingEdge register.
+        /// Asynchronously reads the timestamped contents of the AuxInFallingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<AuxiliaryInput>> ReadTimestampedAuxInEnableFallingEdgeAsync()
+        public async Task<Timestamped<AuxiliaryInputs>> ReadTimestampedAuxInFallingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInEnableFallingEdge.Address));
-            return AuxInEnableFallingEdge.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(AuxInFallingEdge.Address));
+            return AuxInFallingEdge.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the AuxInEnableFallingEdge register.
+        /// Asynchronously writes a value to the AuxInFallingEdge register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteAuxInEnableFallingEdgeAsync(AuxiliaryInput value)
+        public async Task WriteAuxInFallingEdgeAsync(AuxiliaryInputs value)
         {
-            var request = AuxInEnableFallingEdge.FromPayload(MessageType.Write, value);
+            var request = AuxInFallingEdge.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the DigitalInPort register.
+        /// Asynchronously reads the contents of the DigitalInput register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DigitalInPortPayload> ReadDigitalInPortAsync()
+        public async Task<DigitalInputPayload> ReadDigitalInputAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInPort.Address));
-            return DigitalInPort.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInput.Address));
+            return DigitalInput.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the DigitalInPort register.
+        /// Asynchronously reads the timestamped contents of the DigitalInput register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DigitalInPortPayload>> ReadTimestampedDigitalInPortAsync()
+        public async Task<Timestamped<DigitalInputPayload>> ReadTimestampedDigitalInputAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInPort.Address));
-            return DigitalInPort.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInput.Address));
+            return DigitalInput.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the DigitalInPortEnableRisingEdge register.
+        /// Asynchronously reads the contents of the DigitalInputEnableRisingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DigitalInput> ReadDigitalInPortEnableRisingEdgeAsync()
+        public async Task<DigitalInputs> ReadDigitalInputEnableRisingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInPortEnableRisingEdge.Address));
-            return DigitalInPortEnableRisingEdge.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputEnableRisingEdge.Address));
+            return DigitalInputEnableRisingEdge.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the DigitalInPortEnableRisingEdge register.
+        /// Asynchronously reads the timestamped contents of the DigitalInputEnableRisingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DigitalInput>> ReadTimestampedDigitalInPortEnableRisingEdgeAsync()
+        public async Task<Timestamped<DigitalInputs>> ReadTimestampedDigitalInputEnableRisingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInPortEnableRisingEdge.Address));
-            return DigitalInPortEnableRisingEdge.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputEnableRisingEdge.Address));
+            return DigitalInputEnableRisingEdge.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the DigitalInPortEnableRisingEdge register.
+        /// Asynchronously writes a value to the DigitalInputEnableRisingEdge register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteDigitalInPortEnableRisingEdgeAsync(DigitalInput value)
+        public async Task WriteDigitalInputEnableRisingEdgeAsync(DigitalInputs value)
         {
-            var request = DigitalInPortEnableRisingEdge.FromPayload(MessageType.Write, value);
+            var request = DigitalInputEnableRisingEdge.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the DigitalInPortEnableFallingEdge register.
+        /// Asynchronously reads the contents of the DigitalInputFallingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<DigitalInput> ReadDigitalInPortEnableFallingEdgeAsync()
+        public async Task<DigitalInputs> ReadDigitalInputFallingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInPortEnableFallingEdge.Address));
-            return DigitalInPortEnableFallingEdge.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputFallingEdge.Address));
+            return DigitalInputFallingEdge.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the DigitalInPortEnableFallingEdge register.
+        /// Asynchronously reads the timestamped contents of the DigitalInputFallingEdge register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<DigitalInput>> ReadTimestampedDigitalInPortEnableFallingEdgeAsync()
+        public async Task<Timestamped<DigitalInputs>> ReadTimestampedDigitalInputFallingEdgeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInPortEnableFallingEdge.Address));
-            return DigitalInPortEnableFallingEdge.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadUInt16(DigitalInputFallingEdge.Address));
+            return DigitalInputFallingEdge.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the DigitalInPortEnableFallingEdge register.
+        /// Asynchronously writes a value to the DigitalInputFallingEdge register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteDigitalInPortEnableFallingEdgeAsync(DigitalInput value)
+        public async Task WriteDigitalInputFallingEdgeAsync(DigitalInputs value)
         {
-            var request = DigitalInPortEnableFallingEdge.FromPayload(MessageType.Write, value);
+            var request = DigitalInputFallingEdge.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the InputSampling register.
+        /// Asynchronously reads the contents of the InputSamplingMode register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<InputSamplingMode> ReadInputSamplingAsync()
+        public async Task<InputSamplingConfig> ReadInputSamplingModeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(InputSampling.Address));
-            return InputSampling.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(InputSamplingMode.Address));
+            return InputSamplingMode.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the InputSampling register.
+        /// Asynchronously reads the timestamped contents of the InputSamplingMode register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<InputSamplingMode>> ReadTimestampedInputSamplingAsync()
+        public async Task<Timestamped<InputSamplingConfig>> ReadTimestampedInputSamplingModeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(InputSampling.Address));
-            return InputSampling.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(InputSamplingMode.Address));
+            return InputSamplingMode.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the InputSampling register.
+        /// Asynchronously writes a value to the InputSamplingMode register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteInputSamplingAsync(InputSamplingMode value)
+        public async Task WriteInputSamplingModeAsync(InputSamplingConfig value)
         {
-            var request = InputSampling.FromPayload(MessageType.Write, value);
+            var request = InputSamplingMode.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the EncoderSampling register.
+        /// Asynchronously reads the contents of the EncoderSamplingMode register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<EncoderSamplingMode> ReadEncoderSamplingAsync()
+        public async Task<EncoderSamplingConfig> ReadEncoderSamplingModeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderSampling.Address));
-            return EncoderSampling.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderSamplingMode.Address));
+            return EncoderSamplingMode.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the EncoderSampling register.
+        /// Asynchronously reads the timestamped contents of the EncoderSamplingMode register.
         /// </summary>
         /// <returns>
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<EncoderSamplingMode>> ReadTimestampedEncoderSamplingAsync()
+        public async Task<Timestamped<EncoderSamplingConfig>> ReadTimestampedEncoderSamplingModeAsync()
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderSampling.Address));
-            return EncoderSampling.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderSamplingMode.Address));
+            return EncoderSamplingMode.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the EncoderSampling register.
+        /// Asynchronously writes a value to the EncoderSamplingMode register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteEncoderSamplingAsync(EncoderSamplingMode value)
+        public async Task WriteEncoderSamplingModeAsync(EncoderSamplingConfig value)
         {
-            var request = EncoderSampling.FromPayload(MessageType.Write, value);
+            var request = EncoderSamplingMode.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
         }
 
@@ -351,7 +351,7 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<ExpansionBoardTypes> ReadExpansionBoardAsync()
+        public async Task<ExpansionBoardType> ReadExpansionBoardAsync()
         {
             var reply = await CommandAsync(HarpCommand.ReadByte(ExpansionBoard.Address));
             return ExpansionBoard.GetPayload(reply);
@@ -364,7 +364,7 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<ExpansionBoardTypes>> ReadTimestampedExpansionBoardAsync()
+        public async Task<Timestamped<ExpansionBoardType>> ReadTimestampedExpansionBoardAsync()
         {
             var reply = await CommandAsync(HarpCommand.ReadByte(ExpansionBoard.Address));
             return ExpansionBoard.GetTimestampedPayload(reply);
@@ -375,7 +375,7 @@ namespace Harp.InputExpander
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteExpansionBoardAsync(ExpansionBoardTypes value)
+        public async Task WriteExpansionBoardAsync(ExpansionBoardType value)
         {
             var request = ExpansionBoard.FromPayload(MessageType.Write, value);
             await CommandAsync(request);
