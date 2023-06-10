@@ -10,21 +10,21 @@ registers:
     address: 32
     type: U8
     access: Event
-    maskType: AuxiliaryInput
+    maskType: AuxiliaryInputs
     description: Reports the state of the auxiliary inputs.
-  AuxInEnableRisingEdge:
+  AuxInRisingEdge:
     address: 33
     type: U8
     access: Write
-    maskType: AuxiliaryInput
+    maskType: AuxiliaryInputs
     description: Enables rising edge detection on the auxiliary inputs.
-  AuxInEnableFallingEdge:
+  AuxInFallingEdge:
     address: 34
     type: U8
     access: Write
-    maskType: AuxiliaryInput
+    maskType: AuxiliaryInputs
     description: Enables falling edge detection on the auxiliary input port.
-  DigitalInPort:
+  DigitalInput:
     address: 35
     type: U16
     access: Event
@@ -32,37 +32,36 @@ registers:
     payloadSpec:
       DigitalInputState:
         offset: 0
-        maskType: DigitalInput
+        maskType: DigitalInputs
         description: Reports the state of all digital inputs in the port.
       DigitalInputChanged:
         offset: 1
-        maskType: DigitalInput
+        maskType: DigitalInputs
         description: Reports which digital inputs changed state in the port.
-    maskType: DigitalInput
     description: Reports the state of the digital inputs.
-  DigitalInPortEnableRisingEdge:
+  DigitalInputEnableRisingEdge:
     address: 36
     type: U16
     access: Write
-    maskType: DigitalInput
+    maskType: DigitalInputs
     description: Enables rising edge detection on the digital input port.
-  DigitalInPortEnableFallingEdge:
+  DigitalInputFallingEdge:
     address: 37
     type: U16
     access: Write
-    maskType: DigitalInput
+    maskType: DigitalInputs
     description: Enables falling edge detection on the digital input port.
-  InputSampling:
+  InputSamplingMode:
     address: 38
     type: U8
     access: Write
-    maskType: InputSamplingMode
+    maskType: InputSamplingConfig
     description: Configures the input sampling mode.
-  EncoderSampling:
+  EncoderSamplingMode:
     address: 39
     type: U8
     access: Write
-    maskType: EncoderSamplingMode
+    maskType: EncoderSamplingConfig
     description: Configures the rotary encoder sampling mode.
   EncoderData:
     address: 40
@@ -73,17 +72,17 @@ registers:
     address: 41
     type: U8
     access: Write
-    maskType: ExpansionBoardTypes
+    maskType: ExpansionBoardType
     description: Selects the board to be interfaced with via the expansion port.
 bitMasks:
-  AuxiliaryInput:
+  AuxiliaryInputs:
     bits:
       Aux0: 0x1
       Aux1: 0x2
       Aux0Changed: 0x20
       Aux1Changed: 0x40
     description: Specifies the state of auxiliary input lines.
-  DigitalInput:
+  DigitalInputs:
     bits:
       DI0: 0x1
       DI1: 0x2
@@ -97,13 +96,13 @@ bitMasks:
       DI9: 0x200
     description: Specifies the state of the digital input lines.
 groupMasks:
-  InputSamplingMode:
+  InputSamplingConfig:
     values:
       OnInterrupt: 0
       OnPooling1kHz: 1
       OnPooling2Hz: 2
     description: Specifies the input mode configuration from the available list of options.
-  EncoderSamplingMode:
+  EncoderSamplingConfig:
     values:
       Disabled: 0
       Pooling250Hz: 1
@@ -111,7 +110,7 @@ groupMasks:
       Pooling1kHz: 3
       OnMovement: 4
     description: Specifies the available sampling modes for the rotary encoder.
-  ExpansionBoardTypes:
+  ExpansionBoardType:
     values:
       Breakout: 0
     description: Specifies the available expansion boards implemented.
