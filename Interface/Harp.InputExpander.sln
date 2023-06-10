@@ -1,0 +1,25 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{DB2BFEE3-3355-41C2-9ED2-FF881A553F9B}") = "Harp.InputExpander", "Harp.InputExpander\Harp.InputExpander.csproj", "{8746F363-8533-48D9-BBF0-EE06076592E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8746F363-8533-48D9-BBF0-EE06076592E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8746F363-8533-48D9-BBF0-EE06076592E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8746F363-8533-48D9-BBF0-EE06076592E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8746F363-8533-48D9-BBF0-EE06076592E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14895564-0087-4121-B200-D9EFBFC1A33E}
+	EndGlobalSection
+EndGlobal
