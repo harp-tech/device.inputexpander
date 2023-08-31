@@ -61,7 +61,7 @@ registers:
     address: 39
     type: U8
     access: Write
-    maskType: EncoderSampleRateMode
+    maskType: EncoderSampleRateAndMode
     description: Configures the rotary encoder sample mode.
   Encoder:
     address: 40
@@ -102,13 +102,17 @@ groupMasks:
       SampleRate1kHz: 1
       SampleRate2kHz: 2
     description: Specifies the input mode configuration from the available list of options.
-  EncoderSampleRateMode:
+  EncoderSampleRateAndMode:
     values:
       Disabled: 0
-      SampleRate250Hz: 1
-      SampleRate500Hz: 2
-      SampleRate1kHz: 3
-      OnMovement: 4
+      SampleRate250Hz_ModePosition: 1
+      SampleRate500Hz_ModePosition: 2
+      SampleRate1kHz_ModePosition: 3
+      OnMovement_ModePosition: 4
+      SampleRate250Hz_ModeDisplacement: 9
+      SampleRate500Hz_ModeDisplacement: 10
+      SampleRate1kHz_ModeDisplacement: 11
+      OnMovement_ModeDisplacement: 12
     description: Specifies the available sample modes for the rotary encoder.
   ExpansionBoardType:
     values:
