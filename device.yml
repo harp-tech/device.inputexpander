@@ -6,7 +6,7 @@ whoAmI: 1106
 firmwareVersion: "2.2"
 hardwareTargets: "1.2"
 registers:
-  AuxInPort:
+  AuxInState:
     address: 32
     type: U8
     access: Event
@@ -51,23 +51,23 @@ registers:
     access: Write
     maskType: DigitalInputs
     description: Enables falling edge detection on the digital input port.
-  InputSamplingMode:
+  InputSampleModeConfig:
     address: 38
     type: U8
     access: Write
-    maskType: InputSamplingConfig
-    description: Configures the input sampling mode.
-  EncoderSamplingMode:
+    maskType: InputSampleMode
+    description: Configures the input sample mode.
+  EncoderSampleRate:
     address: 39
     type: U8
     access: Write
-    maskType: EncoderSamplingConfig
-    description: Configures the rotary encoder sampling mode.
-  EncoderData:
+    maskType: EncoderSampleRateMode
+    description: Configures the rotary encoder sample mode.
+  Encoder:
     address: 40
     type: S16
     access: Event
-    description: Reports the value of the current read from the rotary encoder.
+    description: Reports the value of the latest read from the rotary encoder.
   ExpansionBoard:
     address: 41
     type: U8
@@ -96,20 +96,20 @@ bitMasks:
       DI9: 0x200
     description: Specifies the state of the digital input lines.
 groupMasks:
-  InputSamplingConfig:
+  InputSampleMode:
     values:
       OnInterrupt: 0
-      OnPooling1kHz: 1
-      OnPooling2Hz: 2
+      SampleRate1kHz: 1
+      SampleRate2kHz: 2
     description: Specifies the input mode configuration from the available list of options.
-  EncoderSamplingConfig:
+  EncoderSampleRateMode:
     values:
       Disabled: 0
-      Pooling250Hz: 1
-      Pooling500Hz: 2
-      Pooling1kHz: 3
+      SampleRate250Hz: 1
+      SampleRate500Hz: 2
+      SampleRate1kHz: 3
       OnMovement: 4
-    description: Specifies the available sampling modes for the rotary encoder.
+    description: Specifies the available sample modes for the rotary encoder.
   ExpansionBoardType:
     values:
       Breakout: 0
