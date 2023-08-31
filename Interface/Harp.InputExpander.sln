@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{DB2BFEE3-3355-41C2-9ED2-FF881A553F9B}") = "Harp.InputExpander", "Harp.InputExpander\Harp.InputExpander.csproj", "{8746F363-8533-48D9-BBF0-EE06076592E8}"
+Project("{0BE7B1F5-8B3E-4DB1-AF37-6661E39DFBA8}") = "Harp.InputExpander", "Harp.InputExpander\Harp.InputExpander.csproj", "{0B936A11-E099-4810-816F-81FB1248758D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8746F363-8533-48D9-BBF0-EE06076592E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8746F363-8533-48D9-BBF0-EE06076592E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8746F363-8533-48D9-BBF0-EE06076592E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8746F363-8533-48D9-BBF0-EE06076592E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B936A11-E099-4810-816F-81FB1248758D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B936A11-E099-4810-816F-81FB1248758D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B936A11-E099-4810-816F-81FB1248758D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B936A11-E099-4810-816F-81FB1248758D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {14895564-0087-4121-B200-D9EFBFC1A33E}
+		SolutionGuid = {1AF75206-443B-4CA2-834C-0140A7A7B6ED}
 	EndGlobalSection
 EndGlobal
