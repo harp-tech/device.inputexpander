@@ -294,7 +294,7 @@ namespace Harp.InputExpander
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the InputSampleModeConfig register.
+        /// Asynchronously reads the contents of the InputSampleMode register.
         /// </summary>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
@@ -303,14 +303,14 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<InputSampleMode> ReadInputSampleModeConfigAsync(CancellationToken cancellationToken = default)
+        public async Task<InputSampleModeConfig> ReadInputSampleModeAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(InputSampleModeConfig.Address), cancellationToken);
-            return InputSampleModeConfig.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(InputSampleMode.Address), cancellationToken);
+            return InputSampleMode.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the InputSampleModeConfig register.
+        /// Asynchronously reads the timestamped contents of the InputSampleMode register.
         /// </summary>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
@@ -319,28 +319,28 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<InputSampleMode>> ReadTimestampedInputSampleModeConfigAsync(CancellationToken cancellationToken = default)
+        public async Task<Timestamped<InputSampleModeConfig>> ReadTimestampedInputSampleModeAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(InputSampleModeConfig.Address), cancellationToken);
-            return InputSampleModeConfig.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(InputSampleMode.Address), cancellationToken);
+            return InputSampleMode.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the InputSampleModeConfig register.
+        /// Asynchronously writes a value to the InputSampleMode register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
         /// </param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteInputSampleModeConfigAsync(InputSampleMode value, CancellationToken cancellationToken = default)
+        public async Task WriteInputSampleModeAsync(InputSampleModeConfig value, CancellationToken cancellationToken = default)
         {
-            var request = InputSampleModeConfig.FromPayload(MessageType.Write, value);
+            var request = InputSampleMode.FromPayload(MessageType.Write, value);
             await CommandAsync(request, cancellationToken);
         }
 
         /// <summary>
-        /// Asynchronously reads the contents of the EncoderSampleRate register.
+        /// Asynchronously reads the contents of the EncoderMode register.
         /// </summary>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
@@ -349,14 +349,14 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the register payload.
         /// </returns>
-        public async Task<EncoderSampleRateMode> ReadEncoderSampleRateAsync(CancellationToken cancellationToken = default)
+        public async Task<EncoderModePayload> ReadEncoderModeAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderSampleRate.Address), cancellationToken);
-            return EncoderSampleRate.GetPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderMode.Address), cancellationToken);
+            return EncoderMode.GetPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously reads the timestamped contents of the EncoderSampleRate register.
+        /// Asynchronously reads the timestamped contents of the EncoderMode register.
         /// </summary>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
@@ -365,23 +365,23 @@ namespace Harp.InputExpander
         /// A task that represents the asynchronous read operation. The <see cref="Task{TResult}.Result"/>
         /// property contains the timestamped register payload.
         /// </returns>
-        public async Task<Timestamped<EncoderSampleRateMode>> ReadTimestampedEncoderSampleRateAsync(CancellationToken cancellationToken = default)
+        public async Task<Timestamped<EncoderModePayload>> ReadTimestampedEncoderModeAsync(CancellationToken cancellationToken = default)
         {
-            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderSampleRate.Address), cancellationToken);
-            return EncoderSampleRate.GetTimestampedPayload(reply);
+            var reply = await CommandAsync(HarpCommand.ReadByte(EncoderMode.Address), cancellationToken);
+            return EncoderMode.GetTimestampedPayload(reply);
         }
 
         /// <summary>
-        /// Asynchronously writes a value to the EncoderSampleRate register.
+        /// Asynchronously writes a value to the EncoderMode register.
         /// </summary>
         /// <param name="value">The value to be stored in the register.</param>
         /// <param name="cancellationToken">
         /// A <see cref="CancellationToken"/> which can be used to cancel the operation.
         /// </param>
         /// <returns>The task object representing the asynchronous write operation.</returns>
-        public async Task WriteEncoderSampleRateAsync(EncoderSampleRateMode value, CancellationToken cancellationToken = default)
+        public async Task WriteEncoderModeAsync(EncoderModePayload value, CancellationToken cancellationToken = default)
         {
-            var request = EncoderSampleRate.FromPayload(MessageType.Write, value);
+            var request = EncoderMode.FromPayload(MessageType.Write, value);
             await CommandAsync(request, cancellationToken);
         }
 
