@@ -43,8 +43,8 @@ namespace Harp.InputExpander
             { 35, typeof(DigitalInput) },
             { 36, typeof(DigitalInputEnableRisingEdge) },
             { 37, typeof(DigitalInputFallingEdge) },
-            { 38, typeof(InputSampleModeConfig) },
-            { 39, typeof(EncoderSampleRate) },
+            { 38, typeof(InputSampleMode) },
+            { 39, typeof(EncoderMode) },
             { 40, typeof(Encoder) },
             { 41, typeof(ExpansionBoard) }
         };
@@ -81,8 +81,8 @@ namespace Harp.InputExpander
     /// <seealso cref="DigitalInput"/>
     /// <seealso cref="DigitalInputEnableRisingEdge"/>
     /// <seealso cref="DigitalInputFallingEdge"/>
-    /// <seealso cref="InputSampleModeConfig"/>
-    /// <seealso cref="EncoderSampleRate"/>
+    /// <seealso cref="InputSampleMode"/>
+    /// <seealso cref="EncoderMode"/>
     /// <seealso cref="Encoder"/>
     /// <seealso cref="ExpansionBoard"/>
     [XmlInclude(typeof(AuxInState))]
@@ -91,8 +91,8 @@ namespace Harp.InputExpander
     [XmlInclude(typeof(DigitalInput))]
     [XmlInclude(typeof(DigitalInputEnableRisingEdge))]
     [XmlInclude(typeof(DigitalInputFallingEdge))]
-    [XmlInclude(typeof(InputSampleModeConfig))]
-    [XmlInclude(typeof(EncoderSampleRate))]
+    [XmlInclude(typeof(InputSampleMode))]
+    [XmlInclude(typeof(EncoderMode))]
     [XmlInclude(typeof(Encoder))]
     [XmlInclude(typeof(ExpansionBoard))]
     [Description("Filters register-specific messages reported by the InputExpander device.")]
@@ -122,8 +122,8 @@ namespace Harp.InputExpander
     /// <seealso cref="DigitalInput"/>
     /// <seealso cref="DigitalInputEnableRisingEdge"/>
     /// <seealso cref="DigitalInputFallingEdge"/>
-    /// <seealso cref="InputSampleModeConfig"/>
-    /// <seealso cref="EncoderSampleRate"/>
+    /// <seealso cref="InputSampleMode"/>
+    /// <seealso cref="EncoderMode"/>
     /// <seealso cref="Encoder"/>
     /// <seealso cref="ExpansionBoard"/>
     [XmlInclude(typeof(AuxInState))]
@@ -132,8 +132,8 @@ namespace Harp.InputExpander
     [XmlInclude(typeof(DigitalInput))]
     [XmlInclude(typeof(DigitalInputEnableRisingEdge))]
     [XmlInclude(typeof(DigitalInputFallingEdge))]
-    [XmlInclude(typeof(InputSampleModeConfig))]
-    [XmlInclude(typeof(EncoderSampleRate))]
+    [XmlInclude(typeof(InputSampleMode))]
+    [XmlInclude(typeof(EncoderMode))]
     [XmlInclude(typeof(Encoder))]
     [XmlInclude(typeof(ExpansionBoard))]
     [XmlInclude(typeof(TimestampedAuxInState))]
@@ -142,8 +142,8 @@ namespace Harp.InputExpander
     [XmlInclude(typeof(TimestampedDigitalInput))]
     [XmlInclude(typeof(TimestampedDigitalInputEnableRisingEdge))]
     [XmlInclude(typeof(TimestampedDigitalInputFallingEdge))]
-    [XmlInclude(typeof(TimestampedInputSampleModeConfig))]
-    [XmlInclude(typeof(TimestampedEncoderSampleRate))]
+    [XmlInclude(typeof(TimestampedInputSampleMode))]
+    [XmlInclude(typeof(TimestampedEncoderMode))]
     [XmlInclude(typeof(TimestampedEncoder))]
     [XmlInclude(typeof(TimestampedExpansionBoard))]
     [Description("Filters and selects specific messages reported by the InputExpander device.")]
@@ -170,8 +170,8 @@ namespace Harp.InputExpander
     /// <seealso cref="DigitalInput"/>
     /// <seealso cref="DigitalInputEnableRisingEdge"/>
     /// <seealso cref="DigitalInputFallingEdge"/>
-    /// <seealso cref="InputSampleModeConfig"/>
-    /// <seealso cref="EncoderSampleRate"/>
+    /// <seealso cref="InputSampleMode"/>
+    /// <seealso cref="EncoderMode"/>
     /// <seealso cref="Encoder"/>
     /// <seealso cref="ExpansionBoard"/>
     [XmlInclude(typeof(AuxInState))]
@@ -180,8 +180,8 @@ namespace Harp.InputExpander
     [XmlInclude(typeof(DigitalInput))]
     [XmlInclude(typeof(DigitalInputEnableRisingEdge))]
     [XmlInclude(typeof(DigitalInputFallingEdge))]
-    [XmlInclude(typeof(InputSampleModeConfig))]
-    [XmlInclude(typeof(EncoderSampleRate))]
+    [XmlInclude(typeof(InputSampleMode))]
+    [XmlInclude(typeof(EncoderMode))]
     [XmlInclude(typeof(Encoder))]
     [XmlInclude(typeof(ExpansionBoard))]
     [Description("Formats a sequence of values as specific InputExpander register messages.")]
@@ -801,70 +801,70 @@ namespace Harp.InputExpander
     /// Represents a register that configures the input sample mode.
     /// </summary>
     [Description("Configures the input sample mode.")]
-    public partial class InputSampleModeConfig
+    public partial class InputSampleMode
     {
         /// <summary>
-        /// Represents the address of the <see cref="InputSampleModeConfig"/> register. This field is constant.
+        /// Represents the address of the <see cref="InputSampleMode"/> register. This field is constant.
         /// </summary>
         public const int Address = 38;
 
         /// <summary>
-        /// Represents the payload type of the <see cref="InputSampleModeConfig"/> register. This field is constant.
+        /// Represents the payload type of the <see cref="InputSampleMode"/> register. This field is constant.
         /// </summary>
         public const PayloadType RegisterType = PayloadType.U8;
 
         /// <summary>
-        /// Represents the length of the <see cref="InputSampleModeConfig"/> register. This field is constant.
+        /// Represents the length of the <see cref="InputSampleMode"/> register. This field is constant.
         /// </summary>
         public const int RegisterLength = 1;
 
         /// <summary>
-        /// Returns the payload data for <see cref="InputSampleModeConfig"/> register messages.
+        /// Returns the payload data for <see cref="InputSampleMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the message payload.</returns>
-        public static InputSampleMode GetPayload(HarpMessage message)
+        public static InputSampleModeConfig GetPayload(HarpMessage message)
         {
-            return (InputSampleMode)message.GetPayloadByte();
+            return (InputSampleModeConfig)message.GetPayloadByte();
         }
 
         /// <summary>
-        /// Returns the timestamped payload data for <see cref="InputSampleModeConfig"/> register messages.
+        /// Returns the timestamped payload data for <see cref="InputSampleMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<InputSampleMode> GetTimestampedPayload(HarpMessage message)
+        public static Timestamped<InputSampleModeConfig> GetTimestampedPayload(HarpMessage message)
         {
             var payload = message.GetTimestampedPayloadByte();
-            return Timestamped.Create((InputSampleMode)payload.Value, payload.Seconds);
+            return Timestamped.Create((InputSampleModeConfig)payload.Value, payload.Seconds);
         }
 
         /// <summary>
-        /// Returns a Harp message for the <see cref="InputSampleModeConfig"/> register.
+        /// Returns a Harp message for the <see cref="InputSampleMode"/> register.
         /// </summary>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="InputSampleModeConfig"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="InputSampleMode"/> register
         /// with the specified message type and payload.
         /// </returns>
-        public static HarpMessage FromPayload(MessageType messageType, InputSampleMode value)
+        public static HarpMessage FromPayload(MessageType messageType, InputSampleModeConfig value)
         {
             return HarpMessage.FromByte(Address, messageType, (byte)value);
         }
 
         /// <summary>
-        /// Returns a timestamped Harp message for the <see cref="InputSampleModeConfig"/>
+        /// Returns a timestamped Harp message for the <see cref="InputSampleMode"/>
         /// register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="InputSampleModeConfig"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="InputSampleMode"/> register
         /// with the specified message type, timestamp, and payload.
         /// </returns>
-        public static HarpMessage FromPayload(double timestamp, MessageType messageType, InputSampleMode value)
+        public static HarpMessage FromPayload(double timestamp, MessageType messageType, InputSampleModeConfig value)
         {
             return HarpMessage.FromByte(Address, timestamp, messageType, (byte)value);
         }
@@ -872,122 +872,138 @@ namespace Harp.InputExpander
 
     /// <summary>
     /// Provides methods for manipulating timestamped messages from the
-    /// InputSampleModeConfig register.
+    /// InputSampleMode register.
     /// </summary>
-    /// <seealso cref="InputSampleModeConfig"/>
-    [Description("Filters and selects timestamped messages from the InputSampleModeConfig register.")]
-    public partial class TimestampedInputSampleModeConfig
+    /// <seealso cref="InputSampleMode"/>
+    [Description("Filters and selects timestamped messages from the InputSampleMode register.")]
+    public partial class TimestampedInputSampleMode
     {
         /// <summary>
-        /// Represents the address of the <see cref="InputSampleModeConfig"/> register. This field is constant.
+        /// Represents the address of the <see cref="InputSampleMode"/> register. This field is constant.
         /// </summary>
-        public const int Address = InputSampleModeConfig.Address;
+        public const int Address = InputSampleMode.Address;
 
         /// <summary>
-        /// Returns timestamped payload data for <see cref="InputSampleModeConfig"/> register messages.
+        /// Returns timestamped payload data for <see cref="InputSampleMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<InputSampleMode> GetPayload(HarpMessage message)
+        public static Timestamped<InputSampleModeConfig> GetPayload(HarpMessage message)
         {
-            return InputSampleModeConfig.GetTimestampedPayload(message);
+            return InputSampleMode.GetTimestampedPayload(message);
         }
     }
 
     /// <summary>
-    /// Represents a register that configures the rotary encoder sample mode.
+    /// Represents a register that configures the rotary encoder acquisition mode.
     /// </summary>
-    [Description("Configures the rotary encoder sample mode.")]
-    public partial class EncoderSampleRate
+    [Description("Configures the rotary encoder acquisition mode.")]
+    public partial class EncoderMode
     {
         /// <summary>
-        /// Represents the address of the <see cref="EncoderSampleRate"/> register. This field is constant.
+        /// Represents the address of the <see cref="EncoderMode"/> register. This field is constant.
         /// </summary>
         public const int Address = 39;
 
         /// <summary>
-        /// Represents the payload type of the <see cref="EncoderSampleRate"/> register. This field is constant.
+        /// Represents the payload type of the <see cref="EncoderMode"/> register. This field is constant.
         /// </summary>
         public const PayloadType RegisterType = PayloadType.U8;
 
         /// <summary>
-        /// Represents the length of the <see cref="EncoderSampleRate"/> register. This field is constant.
+        /// Represents the length of the <see cref="EncoderMode"/> register. This field is constant.
         /// </summary>
         public const int RegisterLength = 1;
 
+        static EncoderModePayload ParsePayload(byte payload)
+        {
+            EncoderModePayload result;
+            result.SampleRate = (EncoderSampleRate)(byte)(payload & 0x7);
+            result.Mode = (EncoderModeConfig)(byte)((payload & 0x8) >> 3);
+            return result;
+        }
+
+        static byte FormatPayload(EncoderModePayload value)
+        {
+            byte result;
+            result = (byte)((byte)value.SampleRate & 0x7);
+            result |= (byte)(((byte)value.Mode << 3) & 0x8);
+            return result;
+        }
+
         /// <summary>
-        /// Returns the payload data for <see cref="EncoderSampleRate"/> register messages.
+        /// Returns the payload data for <see cref="EncoderMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the message payload.</returns>
-        public static EncoderSampleRateMode GetPayload(HarpMessage message)
+        public static EncoderModePayload GetPayload(HarpMessage message)
         {
-            return (EncoderSampleRateMode)message.GetPayloadByte();
+            return ParsePayload(message.GetPayloadByte());
         }
 
         /// <summary>
-        /// Returns the timestamped payload data for <see cref="EncoderSampleRate"/> register messages.
+        /// Returns the timestamped payload data for <see cref="EncoderMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<EncoderSampleRateMode> GetTimestampedPayload(HarpMessage message)
+        public static Timestamped<EncoderModePayload> GetTimestampedPayload(HarpMessage message)
         {
             var payload = message.GetTimestampedPayloadByte();
-            return Timestamped.Create((EncoderSampleRateMode)payload.Value, payload.Seconds);
+            return Timestamped.Create(ParsePayload(payload.Value), payload.Seconds);
         }
 
         /// <summary>
-        /// Returns a Harp message for the <see cref="EncoderSampleRate"/> register.
+        /// Returns a Harp message for the <see cref="EncoderMode"/> register.
         /// </summary>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="EncoderSampleRate"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="EncoderMode"/> register
         /// with the specified message type and payload.
         /// </returns>
-        public static HarpMessage FromPayload(MessageType messageType, EncoderSampleRateMode value)
+        public static HarpMessage FromPayload(MessageType messageType, EncoderModePayload value)
         {
-            return HarpMessage.FromByte(Address, messageType, (byte)value);
+            return HarpMessage.FromByte(Address, messageType, FormatPayload(value));
         }
 
         /// <summary>
-        /// Returns a timestamped Harp message for the <see cref="EncoderSampleRate"/>
+        /// Returns a timestamped Harp message for the <see cref="EncoderMode"/>
         /// register.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">The type of the Harp message.</param>
         /// <param name="value">The value to be stored in the message payload.</param>
         /// <returns>
-        /// A <see cref="HarpMessage"/> object for the <see cref="EncoderSampleRate"/> register
+        /// A <see cref="HarpMessage"/> object for the <see cref="EncoderMode"/> register
         /// with the specified message type, timestamp, and payload.
         /// </returns>
-        public static HarpMessage FromPayload(double timestamp, MessageType messageType, EncoderSampleRateMode value)
+        public static HarpMessage FromPayload(double timestamp, MessageType messageType, EncoderModePayload value)
         {
-            return HarpMessage.FromByte(Address, timestamp, messageType, (byte)value);
+            return HarpMessage.FromByte(Address, timestamp, messageType, FormatPayload(value));
         }
     }
 
     /// <summary>
     /// Provides methods for manipulating timestamped messages from the
-    /// EncoderSampleRate register.
+    /// EncoderMode register.
     /// </summary>
-    /// <seealso cref="EncoderSampleRate"/>
-    [Description("Filters and selects timestamped messages from the EncoderSampleRate register.")]
-    public partial class TimestampedEncoderSampleRate
+    /// <seealso cref="EncoderMode"/>
+    [Description("Filters and selects timestamped messages from the EncoderMode register.")]
+    public partial class TimestampedEncoderMode
     {
         /// <summary>
-        /// Represents the address of the <see cref="EncoderSampleRate"/> register. This field is constant.
+        /// Represents the address of the <see cref="EncoderMode"/> register. This field is constant.
         /// </summary>
-        public const int Address = EncoderSampleRate.Address;
+        public const int Address = EncoderMode.Address;
 
         /// <summary>
-        /// Returns timestamped payload data for <see cref="EncoderSampleRate"/> register messages.
+        /// Returns timestamped payload data for <see cref="EncoderMode"/> register messages.
         /// </summary>
         /// <param name="message">A <see cref="HarpMessage"/> object representing the register message.</param>
         /// <returns>A value representing the timestamped message payload.</returns>
-        public static Timestamped<EncoderSampleRateMode> GetPayload(HarpMessage message)
+        public static Timestamped<EncoderModePayload> GetPayload(HarpMessage message)
         {
-            return EncoderSampleRate.GetTimestampedPayload(message);
+            return EncoderMode.GetTimestampedPayload(message);
         }
     }
 
@@ -1194,8 +1210,8 @@ namespace Harp.InputExpander
     /// <seealso cref="CreateDigitalInputPayload"/>
     /// <seealso cref="CreateDigitalInputEnableRisingEdgePayload"/>
     /// <seealso cref="CreateDigitalInputFallingEdgePayload"/>
-    /// <seealso cref="CreateInputSampleModeConfigPayload"/>
-    /// <seealso cref="CreateEncoderSampleRatePayload"/>
+    /// <seealso cref="CreateInputSampleModePayload"/>
+    /// <seealso cref="CreateEncoderModePayload"/>
     /// <seealso cref="CreateEncoderPayload"/>
     /// <seealso cref="CreateExpansionBoardPayload"/>
     [XmlInclude(typeof(CreateAuxInStatePayload))]
@@ -1204,8 +1220,8 @@ namespace Harp.InputExpander
     [XmlInclude(typeof(CreateDigitalInputPayload))]
     [XmlInclude(typeof(CreateDigitalInputEnableRisingEdgePayload))]
     [XmlInclude(typeof(CreateDigitalInputFallingEdgePayload))]
-    [XmlInclude(typeof(CreateInputSampleModeConfigPayload))]
-    [XmlInclude(typeof(CreateEncoderSampleRatePayload))]
+    [XmlInclude(typeof(CreateInputSampleModePayload))]
+    [XmlInclude(typeof(CreateEncoderModePayload))]
     [XmlInclude(typeof(CreateEncoderPayload))]
     [XmlInclude(typeof(CreateExpansionBoardPayload))]
     [XmlInclude(typeof(CreateTimestampedAuxInStatePayload))]
@@ -1214,8 +1230,8 @@ namespace Harp.InputExpander
     [XmlInclude(typeof(CreateTimestampedDigitalInputPayload))]
     [XmlInclude(typeof(CreateTimestampedDigitalInputEnableRisingEdgePayload))]
     [XmlInclude(typeof(CreateTimestampedDigitalInputFallingEdgePayload))]
-    [XmlInclude(typeof(CreateTimestampedInputSampleModeConfigPayload))]
-    [XmlInclude(typeof(CreateTimestampedEncoderSampleRatePayload))]
+    [XmlInclude(typeof(CreateTimestampedInputSampleModePayload))]
+    [XmlInclude(typeof(CreateTimestampedEncoderModePayload))]
     [XmlInclude(typeof(CreateTimestampedEncoderPayload))]
     [XmlInclude(typeof(CreateTimestampedExpansionBoardPayload))]
     [Description("Creates standard message payloads for the InputExpander device.")]
@@ -1569,33 +1585,33 @@ namespace Harp.InputExpander
     /// Represents an operator that creates a message payload
     /// that configures the input sample mode.
     /// </summary>
-    [DisplayName("InputSampleModeConfigPayload")]
+    [DisplayName("InputSampleModePayload")]
     [Description("Creates a message payload that configures the input sample mode.")]
-    public partial class CreateInputSampleModeConfigPayload
+    public partial class CreateInputSampleModePayload
     {
         /// <summary>
         /// Gets or sets the value that configures the input sample mode.
         /// </summary>
         [Description("The value that configures the input sample mode.")]
-        public InputSampleMode InputSampleModeConfig { get; set; }
+        public InputSampleModeConfig InputSampleMode { get; set; }
 
         /// <summary>
-        /// Creates a message payload for the InputSampleModeConfig register.
+        /// Creates a message payload for the InputSampleMode register.
         /// </summary>
         /// <returns>The created message payload value.</returns>
-        public InputSampleMode GetPayload()
+        public InputSampleModeConfig GetPayload()
         {
-            return InputSampleModeConfig;
+            return InputSampleMode;
         }
 
         /// <summary>
         /// Creates a message that configures the input sample mode.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
-        /// <returns>A new message for the InputSampleModeConfig register.</returns>
+        /// <returns>A new message for the InputSampleMode register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.InputExpander.InputSampleModeConfig.FromPayload(messageType, GetPayload());
+            return Harp.InputExpander.InputSampleMode.FromPayload(messageType, GetPayload());
         }
     }
 
@@ -1603,73 +1619,82 @@ namespace Harp.InputExpander
     /// Represents an operator that creates a timestamped message payload
     /// that configures the input sample mode.
     /// </summary>
-    [DisplayName("TimestampedInputSampleModeConfigPayload")]
+    [DisplayName("TimestampedInputSampleModePayload")]
     [Description("Creates a timestamped message payload that configures the input sample mode.")]
-    public partial class CreateTimestampedInputSampleModeConfigPayload : CreateInputSampleModeConfigPayload
+    public partial class CreateTimestampedInputSampleModePayload : CreateInputSampleModePayload
     {
         /// <summary>
         /// Creates a timestamped message that configures the input sample mode.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
-        /// <returns>A new timestamped message for the InputSampleModeConfig register.</returns>
+        /// <returns>A new timestamped message for the InputSampleMode register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.InputExpander.InputSampleModeConfig.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.InputExpander.InputSampleMode.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
     /// <summary>
     /// Represents an operator that creates a message payload
-    /// that configures the rotary encoder sample mode.
+    /// that configures the rotary encoder acquisition mode.
     /// </summary>
-    [DisplayName("EncoderSampleRatePayload")]
-    [Description("Creates a message payload that configures the rotary encoder sample mode.")]
-    public partial class CreateEncoderSampleRatePayload
+    [DisplayName("EncoderModePayload")]
+    [Description("Creates a message payload that configures the rotary encoder acquisition mode.")]
+    public partial class CreateEncoderModePayload
     {
         /// <summary>
-        /// Gets or sets the value that configures the rotary encoder sample mode.
+        /// Gets or sets a value that sets the sample rate of the Encoder.
         /// </summary>
-        [Description("The value that configures the rotary encoder sample mode.")]
-        public EncoderSampleRateMode EncoderSampleRate { get; set; }
+        [Description("Sets the sample rate of the Encoder.")]
+        public EncoderSampleRate SampleRate { get; set; }
 
         /// <summary>
-        /// Creates a message payload for the EncoderSampleRate register.
+        /// Gets or sets a value that sets the acquisition mode of the Encoder.
+        /// </summary>
+        [Description("Sets the acquisition mode of the Encoder.")]
+        public EncoderModeConfig Mode { get; set; }
+
+        /// <summary>
+        /// Creates a message payload for the EncoderMode register.
         /// </summary>
         /// <returns>The created message payload value.</returns>
-        public EncoderSampleRateMode GetPayload()
+        public EncoderModePayload GetPayload()
         {
-            return EncoderSampleRate;
+            EncoderModePayload value;
+            value.SampleRate = SampleRate;
+            value.Mode = Mode;
+            return value;
         }
 
         /// <summary>
-        /// Creates a message that configures the rotary encoder sample mode.
+        /// Creates a message that configures the rotary encoder acquisition mode.
         /// </summary>
         /// <param name="messageType">Specifies the type of the created message.</param>
-        /// <returns>A new message for the EncoderSampleRate register.</returns>
+        /// <returns>A new message for the EncoderMode register.</returns>
         public HarpMessage GetMessage(MessageType messageType)
         {
-            return Harp.InputExpander.EncoderSampleRate.FromPayload(messageType, GetPayload());
+            return Harp.InputExpander.EncoderMode.FromPayload(messageType, GetPayload());
         }
     }
 
     /// <summary>
     /// Represents an operator that creates a timestamped message payload
-    /// that configures the rotary encoder sample mode.
+    /// that configures the rotary encoder acquisition mode.
     /// </summary>
-    [DisplayName("TimestampedEncoderSampleRatePayload")]
-    [Description("Creates a timestamped message payload that configures the rotary encoder sample mode.")]
-    public partial class CreateTimestampedEncoderSampleRatePayload : CreateEncoderSampleRatePayload
+    [DisplayName("TimestampedEncoderModePayload")]
+    [Description("Creates a timestamped message payload that configures the rotary encoder acquisition mode.")]
+    public partial class CreateTimestampedEncoderModePayload : CreateEncoderModePayload
     {
         /// <summary>
-        /// Creates a timestamped message that configures the rotary encoder sample mode.
+        /// Creates a timestamped message that configures the rotary encoder acquisition mode.
         /// </summary>
         /// <param name="timestamp">The timestamp of the message payload, in seconds.</param>
         /// <param name="messageType">Specifies the type of the created message.</param>
-        /// <returns>A new timestamped message for the EncoderSampleRate register.</returns>
+        /// <returns>A new timestamped message for the EncoderMode register.</returns>
         public HarpMessage GetMessage(double timestamp, MessageType messageType)
         {
-            return Harp.InputExpander.EncoderSampleRate.FromPayload(timestamp, messageType, GetPayload());
+            return Harp.InputExpander.EncoderMode.FromPayload(timestamp, messageType, GetPayload());
         }
     }
 
@@ -1811,6 +1836,35 @@ namespace Harp.InputExpander
     }
 
     /// <summary>
+    /// Represents the payload of the EncoderMode register.
+    /// </summary>
+    public struct EncoderModePayload
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EncoderModePayload"/> structure.
+        /// </summary>
+        /// <param name="sampleRate">Sets the sample rate of the Encoder.</param>
+        /// <param name="mode">Sets the acquisition mode of the Encoder.</param>
+        public EncoderModePayload(
+            EncoderSampleRate sampleRate,
+            EncoderModeConfig mode)
+        {
+            SampleRate = sampleRate;
+            Mode = mode;
+        }
+
+        /// <summary>
+        /// Sets the sample rate of the Encoder.
+        /// </summary>
+        public EncoderSampleRate SampleRate;
+
+        /// <summary>
+        /// Sets the acquisition mode of the Encoder.
+        /// </summary>
+        public EncoderModeConfig Mode;
+    }
+
+    /// <summary>
     /// Specifies the state of auxiliary input lines.
     /// </summary>
     [Flags]
@@ -1845,7 +1899,7 @@ namespace Harp.InputExpander
     /// <summary>
     /// Specifies the input mode configuration from the available list of options.
     /// </summary>
-    public enum InputSampleMode : byte
+    public enum InputSampleModeConfig : byte
     {
         OnInterrupt = 0,
         SampleRate1kHz = 1,
@@ -1855,13 +1909,22 @@ namespace Harp.InputExpander
     /// <summary>
     /// Specifies the available sample modes for the rotary encoder.
     /// </summary>
-    public enum EncoderSampleRateMode : byte
+    public enum EncoderSampleRate : byte
     {
         Disabled = 0,
         SampleRate250Hz = 1,
         SampleRate500Hz = 2,
         SampleRate1kHz = 3,
         OnMovement = 4
+    }
+
+    /// <summary>
+    /// Specifies the available acquisition modes for the rotary encoder.
+    /// </summary>
+    public enum EncoderModeConfig : byte
+    {
+        Position = 0,
+        Displacement = 1
     }
 
     /// <summary>

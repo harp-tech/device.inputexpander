@@ -51,18 +51,26 @@ registers:
     access: Write
     maskType: DigitalInputs
     description: Enables falling edge detection on the digital input port.
-  InputSampleModeConfig:
+  InputSampleMode:
     address: 38
     type: U8
     access: Write
-    maskType: InputSampleMode
+    maskType: InputSampleModeConfig
     description: Configures the input sample mode.
-  EncoderSampleRate:
+  EncoderMode:
     address: 39
     type: U8
     access: Write
-    maskType: EncoderSampleRateAndMode
-    description: Configures the rotary encoder sample mode.
+    payloadSpec:
+      SampleRate:
+        description: Sets the sample rate of the Encoder.
+        maskType: EncoderSampleRate
+        mask: 0x7
+      Mode:
+        description: Sets the acquisition mode of the Encoder.
+        mask: 0x8
+        maskType: EncoderModeConfig
+    description: Configures the rotary encoder acquisition mode.
   Encoder:
     address: 40
     type: S16
@@ -96,24 +104,25 @@ bitMasks:
       DI9: 0x200
     description: Specifies the state of the digital input lines.
 groupMasks:
-  InputSampleMode:
+  InputSampleModeConfig:
     values:
       OnInterrupt: 0
       SampleRate1kHz: 1
       SampleRate2kHz: 2
     description: Specifies the input mode configuration from the available list of options.
-  EncoderSampleRateAndMode:
+  EncoderSampleRate:
     values:
       Disabled: 0
-      SampleRate250Hz_ModePosition: 1
-      SampleRate500Hz_ModePosition: 2
-      SampleRate1kHz_ModePosition: 3
-      OnMovement_ModePosition: 4
-      SampleRate250Hz_ModeDisplacement: 9
-      SampleRate500Hz_ModeDisplacement: 10
-      SampleRate1kHz_ModeDisplacement: 11
-      OnMovement_ModeDisplacement: 12
+      SampleRate250Hz: 1
+      SampleRate500Hz: 2
+      SampleRate1kHz: 3
+      OnMovement: 4
     description: Specifies the available sample modes for the rotary encoder.
+  EncoderModeConfig:
+    values:
+      Position: 0
+      Displacement: 1
+    description: Specifies the available acquisition modes for the rotary encoder.
   ExpansionBoardType:
     values:
       Breakout: 0
