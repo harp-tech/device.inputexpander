@@ -70,6 +70,8 @@ void core_callback_define_clock_default(void)
 	/* Device don't have clock input or output */
 }
 
+uint8_t run_only_if_right_hw = true;
+
 #define T_STARTUP_ON  50
 #define T_STARTUP_OFF 0
 
@@ -81,7 +83,21 @@ void core_callback_initialize_hardware(void)
 	
 	/* Check if device is an harp input expander hardware */
 	if (read_IS_INPUT)
-		core_func_catastrophic_error_detected();
+	{
+		if (run_only_if_right_hw)
+		{
+			core_func_catastrophic_error_detected();
+		}
+		else
+		{
+			/* Let user know that hardware is wrong by blinking LED0 for 5 seconds */
+			for (uint8_t i; i < 50; i++)
+			{
+				tgl_LED_0;
+				_delay_ms(100);
+			}
+		}
+	}
 	
 	/* Initialize hardware */
 	for (uint8_t i = 0; i < 2; i++)
