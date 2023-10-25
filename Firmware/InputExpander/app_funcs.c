@@ -166,6 +166,9 @@ bool app_write_REG_INPUT_MODE(void *a)
 /************************************************************************/
 extern uint8_t aux_inputs_previous_read;
 
+extern int16_t previous_encoder_poke2;
+extern int16_t previous_timer_cnt;
+
 // https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8331-8-and-16-bit-AVR-Microcontroller-XMEGA-AU_Manual.pdf
 
 void app_read_REG_ENCODER_MODE(void) {}
@@ -193,6 +196,8 @@ bool app_write_REG_ENCODER_MODE(void *a)
 		TCE1_CTRLD = TC_EVACT_QDEC_gc | TC_EVSEL_CH0_gc;	                // P. 176-177 of above manual
 		TCE1_PER = 0xFFFF;
 		TCE1_CNT = 0x8000;
+		previous_encoder_poke2 = 0x8000;
+		previous_timer_cnt = 0x8000;
 			
 		/* Start timer */
 		TCE1_CTRLA = TC_CLKSEL_DIV1_gc;		

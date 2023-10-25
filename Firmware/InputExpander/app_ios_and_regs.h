@@ -301,12 +301,16 @@ typedef struct
 #define MSK_ON_INTERRUPTS                  0            // 
 #define MSK_AT_1000FPS                     1            // 
 #define MSK_AT_2000FPS                     2            // 
-#define GM_ENC_MODE                        7            // 
+#define GM_ENC_MODE                        15           // 
 #define MSK_ENC_DISABLED                   0            // Disables the rotary encoder
-#define MSK_ENC_250Hz                      1            // Send encoder data at 250 Hz
-#define MSK_ENC_500Hz                      2            // Send encoder data at 500 Hz
-#define MSK_ENC_1000Hz                     3            // Send encoder data at 1000Hz
-#define MSK_ENC_WHEN_CHANGE                4            // Send encoder data only when movement is detected
+#define MSK_ENC_250Hz                      1            // Send encoder position data at 250 Hz
+#define MSK_ENC_500Hz                      2            // Send encoder position data at 500 Hz
+#define MSK_ENC_1000Hz                     3            // Send encoder position data at 1000Hz
+#define MSK_ENC_WHEN_CHANGE                4            // Send encoder position data only when movement is detected
+#define MSK_ENC_250Hz_DISPLACEMENT         9            // Send encoder displacement data at 250 Hz
+#define MSK_ENC_500Hz_DISPLACEMENT         10           // Send encoder displacement data at 500 Hz
+#define MSK_ENC_1000Hz_DISPLACEMENT        11           // Send encoder displacement data at 1000Hz
+#define MSK_ENC_WHEN_CHANGE_DISPLACEMENT   12           // Send encoder displacement data only when movement is detected
 #define GM_EXPANSION_OPTIONS               1            // 
 #define MSK_BREAKOUT                       0            // 
 
