@@ -30,7 +30,7 @@ void hwbp_app_initialize(void)
     uint8_t hwH = 1;
     uint8_t hwL = 2;
     uint8_t fwH = 2;
-    uint8_t fwL = 2;
+    uint8_t fwL = 3;
     uint8_t ass = 0;
     
    	/* Start core */
@@ -194,51 +194,81 @@ void core_callback_device_to_speed(void) {}
 /************************************************************************/
 uint16_t acquisition_counter = 0;
 
+int16_t previous_encoder_poke2;
+int16_t previous_timer_cnt;
+
 void core_callback_t_before_exec(void)
 {
 	acquisition_counter++;
 	
 	if (app_regs.REG_ENCODER_MODE & GM_ENC_MODE)
 	{
-		if ((app_regs.REG_ENCODER_MODE == MSK_ENC_1000Hz && ((acquisition_counter & 1) == 0)) ||
-			(app_regs.REG_ENCODER_MODE == MSK_ENC_500Hz  && ((acquisition_counter & 3) == 0)) ||
-			(app_regs.REG_ENCODER_MODE == MSK_ENC_250Hz  && ((acquisition_counter & 7) == 0)))
-		{
-	
-			int16_t timer_cnt = TCE1_CNT;
-	
-			if (timer_cnt > 32768)
-			{
-				app_regs.REG_ENCODER = 0xFFFF - timer_cnt;
-			}
-			else
-			{
-				app_regs.REG_ENCODER = (32768 - timer_cnt) * -1;
-			}
-			core_func_send_event(ADD_REG_ENCODER, true);
-		}
-	
-		if (app_regs.REG_ENCODER_MODE == MSK_ENC_WHEN_CHANGE && ((acquisition_counter & 1) == 0))
-		{
-			int16_t timer_cnt = TCE1_CNT;
+		uint8_t encoder_sample_rate = app_regs.REG_ENCODER_MODE & 0x07;
 		
-			if (timer_cnt > 32768)
-			{
-				timer_cnt = 0xFFFF - timer_cnt;
+		if ((encoder_sample_rate == MSK_ENC_1000Hz && ((acquisition_counter & 1) == 0)) ||
+			(encoder_sample_rate == MSK_ENC_500Hz  && ((acquisition_counter & 3) == 0)) ||
+			(encoder_sample_rate == MSK_ENC_250Hz  && ((acquisition_counter & 7) == 0)))
+		{
+	
+			int16_t timer_cnt = TCE1_CNT;
 			
-				if (timer_cnt != app_regs.REG_ENCODER)
+			if ((app_regs.REG_ENCODER_MODE & 0x08) == 0)
+			{
+				if (timer_cnt > 32768)
 				{
-					app_regs.REG_ENCODER = timer_cnt;
-					core_func_send_event(ADD_REG_ENCODER, true);
+					app_regs.REG_ENCODER = 0xFFFF - timer_cnt;
+				}
+				else
+				{
+					app_regs.REG_ENCODER = (32768 - timer_cnt) * -1;
 				}
 			}
 			else
 			{
-				timer_cnt = (32768 - timer_cnt) * -1;
+				app_regs.REG_ENCODER = previous_encoder_poke2 - timer_cnt;
+				
+				previous_encoder_poke2 = timer_cnt;
+			}	
 			
-				if (timer_cnt != app_regs.REG_ENCODER)
+			core_func_send_event(ADD_REG_ENCODER, true);
+		}
+	
+		if (encoder_sample_rate == MSK_ENC_WHEN_CHANGE && ((acquisition_counter & 1) == 0))
+		{
+			int16_t timer_cnt = TCE1_CNT;
+		
+			if ((app_regs.REG_ENCODER_MODE & 0x08) == 0)
+			{
+				if (timer_cnt > 32768)
 				{
-					app_regs.REG_ENCODER = timer_cnt;
+					timer_cnt = 0xFFFF - timer_cnt;
+			
+					if (timer_cnt != app_regs.REG_ENCODER)
+					{
+						app_regs.REG_ENCODER = timer_cnt;
+						core_func_send_event(ADD_REG_ENCODER, true);
+					}
+				}
+				else
+				{
+					timer_cnt = (32768 - timer_cnt) * -1;
+			
+					if (timer_cnt != app_regs.REG_ENCODER)
+					{
+						app_regs.REG_ENCODER = timer_cnt;
+						core_func_send_event(ADD_REG_ENCODER, true);
+					}
+				}
+			}
+			else
+			{
+				if (timer_cnt != previous_timer_cnt)
+				{
+					app_regs.REG_ENCODER = previous_encoder_poke2 - timer_cnt;
+					
+					previous_encoder_poke2 = timer_cnt;
+					previous_timer_cnt = timer_cnt;
+					
 					core_func_send_event(ADD_REG_ENCODER, true);
 				}
 			}
